@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h2>📊 Stock Dashboard</h2>
+
+    <div class="stock-selector">
+      <label><input type="checkbox" value="GOOG"> GOOG</label>
+      <label><input type="checkbox" value="TSLA"> TSLA</label>
+      <label><input type="checkbox" value="AMZN"> AMZN</label>
+      <label><input type="checkbox" value="META"> META</label>
+      <label><input type="checkbox" value="NVDA"> NVDA</label>
+    </div>
+
+    <button onclick="subscribe()">Subscribe</button>
+
+    <div id="cards" class="cards"></div>
+  </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
