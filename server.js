@@ -8,10 +8,11 @@ const io = new Server(server);
 
 app.use(express.static('public'));
 
+// Supported stocks
 const SUPPORTED_STOCKS = ['GOOG', 'TSLA', 'AMZN', 'META', 'NVDA'];
 let stockPrices = {};
 
-// initialize random prices
+// Initialize random prices
 SUPPORTED_STOCKS.forEach(stock => {
   stockPrices[stock] = Math.floor(Math.random() * 1000) + 100;
 });
@@ -28,7 +29,7 @@ io.on('connection', (socket) => {
   });
 });
 
-// update prices every second
+// Update prices every second
 setInterval(() => {
   SUPPORTED_STOCKS.forEach(stock => {
     stockPrices[stock] += Math.floor(Math.random() * 10 - 5);
@@ -45,8 +46,8 @@ setInterval(() => {
   });
 }, 1000);
 
-server.listen(3000, () => {
-  console.log('Server running on http://localhost:3000');
+// Use environment port if available (for deployment)
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
-
-
